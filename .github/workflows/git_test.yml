@@ -4,6 +4,8 @@ on:
   push:
     branches: [master, features/*]
 
+permissions: write-all
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -76,7 +78,7 @@ jobs:
           file: ./build/reports/jacoco/test/jacocoTestReport.html
 
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
+        uses: EnricoMi/publish-unit-test-result-action@v2.6.1
         if: ${{ always() }}
         with:
           files: ./build/test-results/**/*.xml
